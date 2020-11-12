@@ -1,1 +1,1 @@
-# Micro-influencer-Recommendation
+# Discover Micro-influencers for Brands via Better Understanding
