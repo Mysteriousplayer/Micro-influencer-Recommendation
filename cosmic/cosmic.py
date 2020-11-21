@@ -9,7 +9,7 @@ from six.moves import xrange
 vocab_size=420
 batch_size = 32
 input_size = 128
-attribute_layer1_size = 1024
+concept_layer1_size = 1024
 pairs_size = 1
 zzh = 0.001
 epsilon = 1e-3
@@ -184,9 +184,9 @@ with graph1.as_default():
 
     #-----------------------------------------------
     fc0=tf.layers.Flatten()(conv5)
-    w_fc1=get_weights([19*19*128, attribute_layer1_size], zzh)
+    w_fc1=get_weights([19*19*128, concept_layer1_size], zzh)
     dropout1 = tf.nn.dropout(w_fc1, keep_prob)
-    b_fc1=tf.Variable(tf.random_normal([attribute_layer1_size]))
+    b_fc1=tf.Variable(tf.random_normal([concept_layer1_size]))
     fc1=tf.matmul(fc0,dropout1)+b_fc1
     fc1=bn_layer_top(fc1,'bn6',is_training)
     fc1=tf.nn.leaky_relu(fc1, 0.01)
@@ -279,8 +279,8 @@ def main():
             step_all=0
             for part in range(0,Part):
                 print('loading...train')
-                dir1='attribute_train_data_'+str(part)+'_.npy'
-                dir2 = 'attribute_train_without_label_' + str(part) + '_.npy'
+                dir1='concept_train_data_'+str(part)+'_.npy'
+                dir2 = 'concept_train_without_label_' + str(part) + '_.npy'
                 trainX = np.load(dir1)
                 trainY = np.load(dir2)
                 print('ok')
@@ -322,8 +322,8 @@ def main():
             step_all_2=0
             for part2 in range(0, Part2):
                 print('loading...test')
-                dir1_ = 'attribute_test_data_' + str(part2) + '_.npy'
-                dir2_ = 'attribute_test_without_label_' + str(part2) + '_.npy'
+                dir1_ = 'concept_test_data_' + str(part2) + '_.npy'
+                dir2_ = 'concept_test_without_label_' + str(part2) + '_.npy'
                 testX = np.load(dir1_)
                 testY = np.load(dir2_)
                 print('ok')
