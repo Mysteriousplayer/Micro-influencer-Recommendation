@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import argparse
 import cv2
-import xlsxwriter,xlrd
+import xlrd
 import tensorflow as tf
 import keras.backend.tensorflow_backend as KTF
 
@@ -58,7 +58,7 @@ for imagePath in imagePaths:
     image = img_to_array(image)
     data.append(image)
 
-labels=np.load('/media/gantian/New Volume/Experiment/Influencer_2020/tag_dataset/tag_dataset/new/tag_datalabel_identity.npy')
+labels=np.load('tag_datalabel_identity.npy')
 data = np.array(data, dtype="float") / 255.0
 labels = np.array(labels)
 
