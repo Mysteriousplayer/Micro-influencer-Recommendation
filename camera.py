@@ -459,7 +459,7 @@ def main():
             
             print('------------------test------------------------------')
             # load testset infor
-            ExcelFile1 = xlrd.open_workbook('./testset_recall.xlsx')
+            ExcelFile1 = xlrd.open_workbook('./testset_precision.xlsx')
             sheet1 = ExcelFile1.sheet_by_index(0)
             l_user = []
             l_in = []
