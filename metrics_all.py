@@ -1,182 +1,161 @@
 import xlrd
 import xlsxwriter
 
+
 class Metrics:
-    
-    
-    def mrr(l_brand, l_in, l_ist, l_score): # MRR
-        all_positive = 797
+
+    def mrr(l_brand, l_in, l_ist, l_score):  # MRR
+        influencer_num = 797
         brand_num = 74
-        max_len = all_positive * brand_num
+        max_len = influencer_num * brand_num
         index = 0
         index_1 = 0
-    
         top_rank = []
-    
         for j in range(0, brand_num):
             # *****
             # print(j)
-            l = []
-            for i in range(0, all_positive):
+            l = [] #score list
+            for i in range(0, influencer_num):
                 a = l_score[index]
                 l.append(a)
-    
-                if ((i + 1) % all_positive == 0 or (index + 1) == max_len):
+                if ((i + 1) % influencer_num == 0 or (index + 1) == max_len):
                     index += 1
                     break
                 index += 1
             l.sort()
-            ll = []  # positive example ranking score
-    
-            for i in range(0, all_positive):
-    
+
+            ll = []  # list of positive example ranking score
+            for i in range(0, influencer_num):
                 ist = l_ist[index_1]
                 # print(index_1)
                 score = l_score[index_1]
                 # print(i)
-                rank = l.index(score)
-    
+                rank = l.index(score) # compute ranking by score
                 ist = int(ist)
-    
-                if (ist == 1):
-                    ll.append(all_positive - rank)
-    
-                if ((i + 1) % all_positive == 0 or (index_1 + 1) == max_len):
+                if (ist == 1):# is positive example
+                    ll.append(influencer_num - rank)
+
+                if ((i + 1) % influencer_num == 0 or (index_1 + 1) == max_len):
                     # ******
                     # print(ll)
-    
                     y = min(ll)
-    
-                    top_rank.append(y)
+                    top_rank.append(y) # top rank positive example of a brand
                     index_1 += 1
                     break
                 index_1 += 1
         mrr_score = 0.0
         for t in top_rank:
-            mrr_score += (1/t)
-        mrr_score = mrr_score/len(top_rank)
+            mrr_score += (1 / t)
+        mrr_score = mrr_score / len(top_rank)
         print('MRR:', mrr_score)
         return mrr_score
-    
+
     def map(l_brand, l_in, l_ist, l_score):
-        all_positive = 797
+        influencer_num = 797
         brand_num = 74
-        max_len = all_positive * brand_num
+        max_len = influencer_num * brand_num
         index = 0
         index_1 = 0
-        map_list = []
-    
+        map_list = [] # ap of all brands
+
         for j in range(0, brand_num):
             # *****
             # print(j)
-            l = []
-            for i in range(0, all_positive):
+            l = [] #score list
+            for i in range(0, influencer_num):
                 a = l_score[index]
                 l.append(a)
-    
-                if ((i + 1) % all_positive == 0 or (index + 1) == max_len):
+                if ((i + 1) % influencer_num == 0 or (index + 1) == max_len):
                     index += 1
                     break
                 index += 1
             l.sort()
-            ll = []  # positive example ranking score
-    
-            for i in range(0, all_positive):
-    
+
+            ll = []  # list of positive example ranking score
+            for i in range(0, influencer_num):
                 ist = l_ist[index_1]
                 # print(index_1)
                 score = l_score[index_1]
-                rank = l.index(score)
-    
+                rank = l.index(score) # compute ranking by score
                 ist = int(ist)
-    
-                if (ist == 1):
-                    ll.append(all_positive - rank)
-    
-                if ((i + 1) % all_positive == 0 or (index_1 + 1) == max_len):
+                if (ist == 1):# is positive example
+                    ll.append(influencer_num - rank)
+
+                if ((i + 1) % influencer_num == 0 or (index_1 + 1) == max_len):
                     ll.sort()
-    
                     map_score = 0.0
                     for k in range(len(ll)):
-                        map_score += ((k+1)/ll[k])
-                    map_score = map_score/len(ll)
+                        map_score += ((k + 1) / ll[k])
+                    map_score = map_score / len(ll)
                     map_list.append(map_score)
-    
                     index_1 += 1
                     break
                 index_1 += 1
         average_map = 0.0
         for m in map_list:
             average_map += m
-        average_map = average_map/len(map_list)
+        average_map = average_map / len(map_list) # map
         print('mAP:', average_map)
         return average_map
-    
-    def metrics(l_brand, l_in, l_ist, l_score):  # MedR,p@10,p@50
-        all_positive = 797
+
+    def metrics(l_brand, l_in, l_ist, l_score):  # MedR,r@10,r@50
+        influencer_num = 797
         brand_num = 74
-        max_len = all_positive * brand_num
+        max_len = influencer_num * brand_num
         index = 0
         index_1 = 0
-    
-        p_10 = []
-        p_50 = []
-        medr = []
-    
+        r_10 = [] # recall@10
+        r_50 = [] # recall@50
+        medr = [] # top rank positive example of all brands, to compute medr
+
         for j in range(0, brand_num):
             # *****
             # print(j)
-            l = []
-            for i in range(0, all_positive):
+            l = [] #score list
+            for i in range(0, influencer_num):
                 a = l_score[index]
                 l.append(a)
-    
-                if ((i + 1) % all_positive == 0 or (index + 1) == max_len):
+                if ((i + 1) % influencer_num == 0 or (index + 1) == max_len):
                     index += 1
                     break
                 index += 1
             l.sort()
-            ll = []  # positive example ranking score
-    
-            for i in range(0, all_positive):
-    
+            ll = []  # list of positive example ranking score
+
+            for i in range(0, influencer_num):
                 ist = l_ist[index_1]
                 # print(index_1)
                 score = l_score[index_1]
-                rank = l.index(score)
-    
+                rank = l.index(score)# compute ranking by score
                 ist = int(ist)
-    
-                if (ist == 1):
-                    ll.append(all_positive - rank)
-    
-                if ((i + 1) % all_positive == 0 or (index_1 + 1) == max_len):
+                if (ist == 1):# is positive example
+                    ll.append(influencer_num - rank)
+
+                if ((i + 1) % influencer_num == 0 or (index_1 + 1) == max_len):
                     # ******
                     # print(ll)
-    
-                    y = min(ll)
-    
+                    y = min(ll) #top rank
                     medr.append(y)
                     index_2 = 0
                     index_3 = 0
                     for a in ll:
-                        if (a < 11):
+                        if (a < 11):# top 10
                             index_2 += 1
-                        if (a < 51):
+                        if (a < 51):# top 50
                             index_3 += 1
-                    p1 = index_2 / len(ll)
-                    p2 = index_3 / len(ll)
-    
-                    p_10.append(p1)
-                    p_50.append(p2)
+                    r1 = index_2 / len(ll)
+                    r2 = index_3 / len(ll)
+
+                    r_10.append(r1)
+                    r_50.append(r2)
                     index_1 += 1
                     break
                 index_1 += 1
-    
+
         # MedR
         median = 0.0
         medr.sort()
-        med = 0 # median index
+        med = 0  # median index
         if (len(medr) % 2 == 0):
             med = len(medr) / 2
         else:
@@ -185,20 +164,20 @@ class Metrics:
             if (xy == (med - 1)):
                 median = medr[xy]
         print('MedR:', median)
-    
-        p10 = 0.0
-        for xy1 in p_10:
-            p10 += xy1
-        # p@10
-        print('p@10:', p10 / len(p_10))
-    
-        p50 = 0.0
-        for xy2 in p_50:
-            p50 += xy2
-        # p@50
-        print('p@50:', p50 / len(p_50))
-        return median, p10 / len(p_10), p50 / len(p_50)
-    
+
+        r10 = 0.0
+        for xy1 in r_10:
+            r10 += xy1
+        # r@10
+        print('r@10:', r10 / len(r_10))
+
+        r50 = 0.0
+        for xy2 in r_50:
+            r50 += xy2
+        # r@50
+        print('r@50:', r50 / len(r_50))
+        return median, r10 / len(r_10), r50 / len(r_50)
+
     def auc(l_brand, l_in, l_ist, l_score):
         # AUC cAUC
         test_auc_file_path = './testset_auc.xlsx'
@@ -209,9 +188,9 @@ class Metrics:
         AUC_all = 0.0
         cAUC = 0.0
         cAUC_all = 0.0
-    
+
         dict_s = {}
-    
+
         for i in range(0, len(l_brand)):
             a_ = l_brand[i]
             b_ = l_in[i]
@@ -233,7 +212,7 @@ class Metrics:
                 score1 = dict_s[a + b]
             if a + e in dict_s.keys():
                 score2 = dict_s[a + e]
-    
+
             if (score1 == 0.0 or score2 == 0.0):
                 err += 1
             if (c == f):
@@ -243,7 +222,7 @@ class Metrics:
                 if (c == f):
                     # print(score1,score2)
                     cAUC += 1
-    
+
         print('AUC is:', AUC / AUC_all, AUC)
         print('cAUC is:', cAUC / cAUC_all, cAUC)
         print(err)
