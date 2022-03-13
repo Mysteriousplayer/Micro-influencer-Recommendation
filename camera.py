@@ -355,8 +355,8 @@ def main():
     # metrics
     l_train_loss = []
     l_test_loss = []
-    l_p_10 = []
-    l_p_50 = []
+    l_r_10 = []
+    l_r_50 = []
     l_medr = []
     l_auc = []
     l_cauc = []
@@ -496,14 +496,14 @@ def main():
             print('is_training:', is_train)
             
             #--------------Measurement-----------------------------------
-            medr, p10, p50 = Metrics.metrics(l_user, l_in, l_ist, l_score)
+            medr, r10, r50 = Metrics.metrics(l_user, l_in, l_ist, l_score)
             auc, cauc = Metrics.auc(l_user, l_in, l_ist, l_score)
             mrr=Metrics.mrr(l_user, l_in, l_ist, l_score)
             map=Metrics.map(l_user, l_in, l_ist, l_score)
             
             l_medr.append(medr)
-            l_p_10.append(p10)
-            l_p_50.append(p50)
+            l_r_10.append(r10)
+            l_r_50.append(r50)
             l_auc.append(auc)
             l_cauc.append(cauc)
             l_mrr.append(mrr)
@@ -515,7 +515,7 @@ def main():
             Epoch += 1
             for ii in range(0, Epoch):
                 print(ii)
-                print(l_p_10[ii], l_p_50[ii], l_medr[ii], l_auc[ii], l_cauc[ii],l_mrr[ii],l_map[ii])
+                print(l_r_10[ii], l_r_50[ii], l_medr[ii], l_auc[ii], l_cauc[ii],l_mrr[ii],l_map[ii])
 
 
 if __name__ == '__main__':
