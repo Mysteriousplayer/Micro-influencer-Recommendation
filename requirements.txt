@@ -1,0 +1,5 @@
+numpy                   1.18.5
+xlrd                    1.2.0
+XlsxWriter              3.0.3
+tensorflow       1.15.4
+python	3.6.13
