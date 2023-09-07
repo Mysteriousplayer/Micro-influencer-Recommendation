@@ -10,5 +10,4 @@ Brand-micro-influencer dataset: plase contact email: gantian@sdu.edu.cn.
 > &emsp;&emsp;&emsp;&emsp; title={Discover Micro-Influencers for Brands via Better Understanding}, \
 > &emsp;&emsp;&emsp;&emsp; year={2022}, \
 > &emsp;&emsp;&emsp;&emsp; volume={24}, \
-> &emsp;&emsp;&emsp;&emsp; number={}, \
 > &emsp;&emsp;&emsp;&emsp; pages={2595-2605}}
