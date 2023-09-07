@@ -1,6 +1,8 @@
 # Discover Micro-influencers for Brands via Better Understanding
 A revised version of the paper has been published.
 
+Brand-micro-influencer dataset: plase contact email: gantian@sdu.edu.cn.
+
 ## Cite
 > @ARTICLE{wang_2022, \
 > &emsp;&emsp;&emsp;&emsp; author={Wang, Shaokun and Gan, Tian and Liu, Yuan and Zhang, Li and Wu, JianLong and Nie, Liqiang}, \
