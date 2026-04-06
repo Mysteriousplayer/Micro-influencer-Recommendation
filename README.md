@@ -1,4 +1,4 @@
-# Discover Micro-influencers for Brands via Better Understanding
+# [TMM 2021] Discover Micro-influencers for Brands via Better Understanding
 A revised version of the paper has been published.
 
 Brand-micro-influencer dataset: plase contact email: gantian@sdu.edu.cn.
