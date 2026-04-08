@@ -25,7 +25,7 @@ Brand-micro-influencer dataset: plase contact email: gantian@sdu.edu.cn.
 ## Training
 
 ```
-python run.sh
+python camera_v2.py
 ```
 
 ## Cite
