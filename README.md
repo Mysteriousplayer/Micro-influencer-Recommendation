@@ -22,8 +22,11 @@ A new version of the paper has been published.
 </div>
 
 -We propose the CAMERA to address marketing effectiveness and self-development needs together in the micro-influencer recommendation task, which successfully understands the marketing intent of social media accounts at a fine-grained level. 
+
 -We design the COSMIC and the BCAM to learn social media account representation from the perspective of historical activities and marketing direction. Meanwhile, interpretable concept-based parameters from the two perspectives can be utilized to help brands and micro-influencers make decisions. 
+
 -We model endorsement information and micro-influencer influence information in micro-influencer ranking, where two novel adaptive learned metrics (endorsement effect score and micro-influencer influence score) are defined to learn a better micro-influencer ranking function. 
+
 -Recommendation performance analysis and recommendation interpretability analysis demonstrate the advantage of our proposed method compared with the state-of-the-art methods. Especially, we implement a new application scenario of keywords-based micro-influencer search based on our proposed method and demonstrate the effectiveness of it.
 
 ## Installation
