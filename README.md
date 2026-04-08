@@ -18,7 +18,7 @@ A revised version of the paper has been published.
 </div>
 
 <div align=center>
-<img src="https://github.com/Mysteriousplayer/TMM21-CAMERA/blob/main/fig3.png">
+<img src="https://github.com/Mysteriousplayer/TMM21-CAMERA/blob/main/fig3.png" width="60%">
 </div>
 
 -We propose the CAMERA to address marketing effectiveness and self-development needs together in the micro-influencer recommendation task, which successfully understands the marketing intent of social media accounts at a fine-grained level. 
