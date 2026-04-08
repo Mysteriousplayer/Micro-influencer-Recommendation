@@ -1,7 +1,7 @@
 # [TMM 2021] Discover Micro-influencers for Brands via Better Understanding
 
 ## News
-A revised version of the paper has been published.
+A new version of the paper has been published.
 
 ## Abstract
 
