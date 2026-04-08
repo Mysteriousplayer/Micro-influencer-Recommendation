@@ -13,8 +13,20 @@ A revised version of the paper has been published.
 -We model endorsement information and micro-influencer influence information in micro-influencer ranking, where two novel adaptive learned metrics (endorsement effect score and micro-influencer influence score) are defined to learn a better micro-influencer ranking function. 
 -Recommendation performance analysis and recommendation interpretability analysis demonstrate the advantage of our proposed method compared with the state-of-the-art methods. Especially, we implement a new application scenario of keywords-based micro-influencer search based on our proposed method and demonstrate the effectiveness of it.
 
+## Installation
+Install all requirements required to run the code on a Python 3.6.13 by:
+> First, you need activate a new conda environment.
+> 
+> pip install -r requirements.txt
+
 ## Datasets
 Brand-micro-influencer dataset: plase contact email: gantian@sdu.edu.cn.
+
+## Training
+
+```
+python run.sh
+```
 
 ## Cite
 If you found our work useful for your research, please cite our work:
